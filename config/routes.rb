@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  scope '/api' do
-    get :food, to: 'foods#index'
-  end
+  resources :recipes
+  # scope '/api' do
+    # get 'recipes/index'
+    # post 'recipes/create'
+    # get '/show/:id', to: 'recipes#show'
+    # delete '/destroy/:id', to: 'recipes#destroy'
+
+  # end
 end
