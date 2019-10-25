@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from './ui/Button'
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -99,14 +100,10 @@ class Recipe extends React.Component {
               />
             </div>
             <div className="col-sm-12 col-lg-2">
-              <button type="button" className="btn btn-danger" onClick={this.deleteRecipe}>
-                Delete Recipe
-              </button>
+              < Button onClick={this.deleteRecipe.bind(this)} text="Delete Recipe" red={true}/>
+              < Button onClick={()=> this.props.history.push('/recipes')} text="Back to Recipes" />
             </div>
           </div>
-          <Link to="/recipes" className="btn btn-link">
-            Back to recipes
-          </Link>
         </div>
       </div>
     );

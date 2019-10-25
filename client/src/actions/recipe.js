@@ -1,13 +1,14 @@
+  
 import { GET_RECIPES_SUCCESS, GET_RECIPES_FAILURE } from '../constants/recipe';
 
 export const getRecipesSuccess = details => ({
-      type: GET_RECIPES_SUCCESS,
-      details,
+      type: GET_RECIPES_SUCCESS,
+      details,
     });
 
 export const getRecipesFailure = details => ({
-      type: GET_RECIPES_FAILURE,
-      details,
+      type: GET_RECIPES_FAILURE,
+      details,
     });
 
 export const getRecipes = () => (dispatch,getState) => {

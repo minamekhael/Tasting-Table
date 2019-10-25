@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux'; 
 import { getRecipes } from '../actions/recipe';
+import Button from './ui/Button';
+import RecipeCard from './ui/RecipeCard';
+import NoRecipe from './ui/NoRecipe';
+import Header from './ui/Header';
 
 class Recipes extends React.Component {
   constructor(props) {
@@ -25,52 +29,24 @@ class Recipes extends React.Component {
     console.log('render', this.props)
     const { recipes } = this.props;
     const allRecipes = recipes.map((recipe, index) => (
-      <div key={index} className="col-md-6 col-lg-4">
-        <div className="card mb-4">
-          <img
-            src={recipe.image}
-            className="card-img-top"
-            alt={`${recipe.name} image`}
-          />
-          <div className="card-body">
-            <h5 className="card-title">{recipe.name}</h5>
-            <Link to={`/recipe/${recipe.id}`} className="btn custom-button">
-              View Recipe
-            </Link>
-          </div>
-        </div>
-      </div>
+      < RecipeCard recipe={recipe} index={index} />
     ));
-    const noRecipe = (
-      <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
-        <h4>
-          No recipes yet. Why not <Link to="/new_recipe">create one</Link>
-        </h4>
-      </div>
-    );
 
     return (
       <div>
         <section className="jumbotron jumbotron-fluid text-center">
-          <div className="container py-5">
-            <h1 className="display-4">Recipes for every occasion</h1>
-            <p className="lead text-muted">
-              A list of your own recipes to share or keep.
-            </p>
-          </div>
+          < Header />
         </section>
         <div className="py-5">
           <main className="container">
             <div className="row">
-              {recipes.length > 0 ? allRecipes : noRecipe}
+              {recipes.length > 0 ? allRecipes : < NoRecipe />}
             </div>
             <Link to="/" className="btn custom-button">
               Home
             </Link>
             <div className="text-right mb-3">
-              <Link to="/new_recipe" className="btn custom-button">
-                Create New Recipe
-              </Link>
+            < Button onClick={()=> this.props.history.push('/new_recipe')} text="Create New Recipe" />
             </div>
           </main>
         </div>

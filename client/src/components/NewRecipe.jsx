@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './ui/Button'
 import { Link } from "react-router-dom";
 
 class NewRecipe extends React.Component {
@@ -16,7 +17,7 @@ class NewRecipe extends React.Component {
   }
 
   stripHtmlEntities(str) {
-    return String(str)
+      return String(str)
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
   }
@@ -99,9 +100,7 @@ class NewRecipe extends React.Component {
                 required
                 onChange={this.onChange}
               />
-              <button type="submit" className="btn custom-button mt-3">
-                Create Recipe
-              </button>
+              < Button onClick={this.onSubmit.bind(this)} text="Create Recipe"/>
               <Link to="/recipes" className="btn button mt-3">
                 Back to recipes
               </Link>
