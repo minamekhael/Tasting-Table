@@ -27,7 +27,7 @@ class NewRecipe extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    const url = "/api/v1/recipes/create";
+    const url = "http://localhost:3001/recipes";
     const { name, ingredients, instruction } = this.state;
 
     if (name.length == 0 || ingredients.length == 0 || instruction.length == 0)
@@ -39,11 +39,9 @@ class NewRecipe extends React.Component {
       instruction: instruction.replace(/\n/g, "<br> <br>")
     };
 
-    const token = document.querySelector('meta[name="csrf-token"]').content;
     fetch(url, {
       method: "POST",
       headers: {
-        "X-CSRF-Token": token,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(body)
@@ -104,7 +102,7 @@ class NewRecipe extends React.Component {
               <button type="submit" className="btn custom-button mt-3">
                 Create Recipe
               </button>
-              <Link to="/recipes" className="btn btn-link mt-3">
+              <Link to="/recipes" className="btn button mt-3">
                 Back to recipes
               </Link>
             </form>

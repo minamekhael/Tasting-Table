@@ -22,7 +22,7 @@ class Recipe extends React.Component {
         params: { id }
       }
     } = this.props;
-    const url = `/api/v1/show/${id}`;
+    const url = `http://localhost:3001/recipes/${id}`;
     fetch(url)
       .then(response => {
         if (response.ok) {
@@ -31,7 +31,7 @@ class Recipe extends React.Component {
         throw new Error("Network response was not ok.");
       })
       .then(response => this.setState({ recipe: response }))
-      .catch(() => this.props.history.push("/recipes"));
+      .catch(error => console.log(error.message));
   }
 
   deleteRecipe() {
@@ -40,14 +40,9 @@ class Recipe extends React.Component {
         params: { id }
       }
     } = this.props;
-    const url = `/api/v1/destroy/${id}`;
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const url = `http://localhost:3001/recipes/${id}`;
     fetch(url, {
       method: "DELETE",
-      headers: {
-        "X-CSRF-Token": token,
-        "Content-Type": "application/json"
-      }
     })
       .then(response => {
         if (response.ok) {

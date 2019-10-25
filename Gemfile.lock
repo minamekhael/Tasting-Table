@@ -39,7 +39,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
-    binding_of_caller (0.7.2)
+    binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
     byebug (9.0.6)
@@ -51,7 +51,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
-    debug_inspector (0.0.2)
+    debug_inspector (0.0.3)
     erubis (2.7.0)
     execjs (2.7.0)
     foreman (0.82.0)
@@ -82,6 +82,7 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     rack (2.0.1)
+    rack-cors (1.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.1)
@@ -157,6 +158,7 @@ DEPENDENCIES
   foreman (~> 0.82.0)
   jbuilder (~> 2.0)
   jquery-rails
+  rack-cors
   rails (= 5.0.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
@@ -167,4 +169,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.12.5
+   1.17.3

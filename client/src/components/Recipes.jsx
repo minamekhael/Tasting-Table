@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux'; 
+import { getRecipes } from '../actions/recipe';
 
 class Recipes extends React.Component {
   constructor(props) {
@@ -9,20 +11,19 @@ class Recipes extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const url = "/api/v1/recipes/index";
-    fetch(url)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error("Network response was not ok.");
-      })
-      .then(response => this.setState({ recipes: response }))
-      .catch(() => this.props.history.push("/"));
+  componentDidMount(){
+    const {dispatch}= this.props;
+    console.log('component mounted', this.props)
+    dispatch(getRecipes())
   }
+
+  componentDidUpdate(){
+    console.log('component updated', this.props) 
+  }
+
   render() {
-    const { recipes } = this.state;
+    console.log('render', this.props)
+    const { recipes } = this.props;
     const allRecipes = recipes.map((recipe, index) => (
       <div key={index} className="col-md-6 col-lg-4">
         <div className="card mb-4">
@@ -60,22 +61,22 @@ class Recipes extends React.Component {
         </section>
         <div className="py-5">
           <main className="container">
-            <div className="text-right mb-3">
-              <Link to="/recipe" className="btn custom-button">
-                Create New Recipe
-              </Link>
-            </div>
             <div className="row">
               {recipes.length > 0 ? allRecipes : noRecipe}
             </div>
             <Link to="/" className="btn custom-button">
               Home
             </Link>
+            <div className="text-right mb-3">
+              <Link to="/new_recipe" className="btn custom-button">
+                Create New Recipe
+              </Link>
+            </div>
           </main>
         </div>
       </div>
     );
   }
 }
-
-export default Recipes;
+  const mapStateToProps = state => ({ recipes: state.recipes.recipes });
+export default connect(mapStateToProps)(Recipes);

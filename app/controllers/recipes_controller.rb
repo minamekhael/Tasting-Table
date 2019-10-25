@@ -1,6 +1,8 @@
-class Api::V1::RecipesController < ApplicationController
+class RecipesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  
   def index
-    recipe = Recipe.all.order(created_at: :desc)
+    recipes = Recipe.all.order(created_at: :desc)
     render json: recipes
   end
 
