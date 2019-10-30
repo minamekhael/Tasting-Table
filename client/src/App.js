@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SelectedFoods from './SelectedFoods';
 import FoodSearch from './FoodSearch';
+import './stylesheets/application.css'
+
 
 class App extends Component {
   state = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 import { getRecipes } from '../actions/recipe';
 import Button from './ui/Button';
 import RecipeCard from './ui/RecipeCard';
@@ -9,10 +9,8 @@ import Header from './ui/Header';
 
 class Recipes extends React.Component {
   constructor(props) {
+    console.log('constructor')
     super(props);
-    this.state = {
-      recipes: []
-    };
   }
 
   componentDidMount(){
@@ -29,7 +27,7 @@ class Recipes extends React.Component {
     console.log('render', this.props)
     const { recipes } = this.props;
     const allRecipes = recipes.map((recipe, index) => (
-      < RecipeCard recipe={recipe} index={index} />
+      < RecipeCard key={index} recipe={recipe} index={index} />
     ));
 
     return (
@@ -46,7 +44,7 @@ class Recipes extends React.Component {
               Home
             </Link>
             <div className="text-right mb-3">
-            < Button onClick={()=> this.props.history.push('/new_recipe')} text="Create New Recipe" />
+            < Button onClick={()=> this.props.history.push('/recipes/new')} text="Create New Recipe" />
             </div>
           </main>
         </div>

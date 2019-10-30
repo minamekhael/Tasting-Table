@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Link  from "./Link";
 
 const RecipeCard = props => {
@@ -8,11 +8,11 @@ const RecipeCard = props => {
               <img
                 src={props.recipe.image}
                 className="card-img-top"
-                alt={`${props.recipe.name} image`}
+                alt={`${props.recipe.name}`}
               />
               <div className="card-body">
                 <h5 className="card-title">{props.recipe.name}</h5>
-                <Link path={`/recipe/${props.recipe.id}`} text="View Recipe" />
+                <Link path={`/recipes/${props.recipe.id}`} text="View Recipe" />
               </div>
             </div>
           </div>
