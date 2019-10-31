@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20191025041348) do
 
-  create_table "categories", force: :cascade do |t|
-    t.integer  "recipe_id"
-    t.string   "meal_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_categories_on_recipe_id"
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.string   "name",                                                                                                                                                                                          null: false
     t.text     "ingredients",                                                                                                                                                                                   null: false

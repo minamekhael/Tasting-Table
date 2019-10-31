@@ -1,8 +1,5 @@
 import React from "react";
-import Button from './ui/Button';
-import {deleteRecipe} from '../actions/recipe';
-import { connect } from 'react-redux';
-
+import Button from './ui/Button'
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -10,7 +7,7 @@ class Recipe extends React.Component {
     this.state = { recipe: { ingredients: "" } };
 
     this.addHtmlEntities = this.addHtmlEntities.bind(this);
-    this.handleDeleteRecipe = this.handleDeleteRecipe.bind(this);
+    this.deleteRecipe = this.deleteRecipe.bind(this);
   }
 
   addHtmlEntities(str) {
@@ -37,18 +34,24 @@ class Recipe extends React.Component {
       .catch(error => console.log(error.message));
   }
 
- handleDeleteRecipe() {
-    const {dispatch} = this.props;
+  deleteRecipe() {
     const {
       match: {
         params: { id }
       }
     } = this.props;
-   dispatch(deleteRecipe(id, this.navRecipes.bind(this)))
-     console.log()
-}
-  navRecipes(){
-    this.props.history.push("/recipes")
+    const url = `http://localhost:3001/recipes/${id}`;
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then(() => this.props.history.push("/recipes"))
+      .catch(error => console.log(error.message));
   }
 
   render() {
@@ -96,7 +99,7 @@ class Recipe extends React.Component {
               />
             </div>
             <div className="col-sm-12 col-lg-2">
-              < Button onClick={this.handleDeleteRecipe} text="Delete Recipe" red={true}/>
+              < Button onClick={this.deleteRecipe.bind(this)} text="Delete Recipe" red={true}/>
               < Button onClick={()=> this.props.history.push('/recipes')} text="Back to Recipes" />
             </div>
           </div>
@@ -105,5 +108,5 @@ class Recipe extends React.Component {
     );
   }
 }
-const mapStateToProps = state => ({ recipes: state.recipes.recipes });
-export default connect(mapStateToProps)(Recipe);
+
+export default Recipe;

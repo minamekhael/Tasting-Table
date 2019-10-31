@@ -53,7 +53,7 @@ class NewRecipe extends React.Component {
         }
         throw new Error("Network response was not ok.");
       })
-      .then(response => this.props.history.push(`/recipe/${response.id}`))
+      .then(response => this.props.history.push(`/recipes/${response.id}`))
       .catch(error => console.log(error.message));
   }
 

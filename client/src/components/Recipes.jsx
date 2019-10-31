@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { getRecipes } from '../actions/recipe';
 import Button from './ui/Button';
@@ -35,16 +34,20 @@ class Recipes extends React.Component {
         <section className="jumbotron jumbotron-fluid text-center">
           < Header />
         </section>
+        <div className="text-center">
+        < Button onClick={()=> this.props.history.push('/')} text="Home"/>
+
+        < Button onClick={()=> this.props.history.push('/recipes/new')} text="Create New Recipe"/>
+        </div>
         <div className="py-5">
           <main className="container">
             <div className="row">
               {recipes.length > 0 ? allRecipes : < NoRecipe />}
             </div>
-            <Link to="/" className="btn custom-button">
-              Home
-            </Link>
-            <div className="text-right mb-3">
-            < Button onClick={()=> this.props.history.push('/recipes/new')} text="Create New Recipe" />
+            <div className="text-center">
+            < Button onClick={()=> this.props.history.push('/')} text="Home"/>
+            
+            < Button onClick={()=> this.props.history.push('/recipes/new')} text="Create New Recipe"/>
             </div>
           </main>
         </div>
