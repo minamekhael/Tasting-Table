@@ -1,5 +1,6 @@
 import React from 'react'
-import Link  from "./Link";
+import Link from "./Link";
+import Vote from "../Vote"
 
 const RecipeCard = props => {
         return (
@@ -13,6 +14,7 @@ const RecipeCard = props => {
               <div className="card-body">
                 <h5 className="card-title">{props.recipe.name}</h5>
                 <Link path={`/recipes/${props.recipe.id}`} text="View Recipe" />
+                <Vote />
               </div>
             </div>
           </div>

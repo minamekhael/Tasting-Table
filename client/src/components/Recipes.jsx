@@ -46,7 +46,7 @@ class Recipes extends React.Component {
             </div>
             <div className="text-center">
             < Button onClick={()=> this.props.history.push('/')} text="Home"/>
-            
+
             < Button onClick={()=> this.props.history.push('/recipes/new')} text="Create New Recipe"/>
             </div>
           </main>
@@ -57,3 +57,8 @@ class Recipes extends React.Component {
 }
   const mapStateToProps = state => ({ recipes: state.recipes.recipes });
 export default connect(mapStateToProps)(Recipes);
+
+// implement voting system for Recipes
+// button to vote
+// track votes
+// click button increase votes

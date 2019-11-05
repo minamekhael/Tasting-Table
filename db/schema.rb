@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(version: 20191025041348) do
 
   create_table "recipes", force: :cascade do |t|
-    t.string   "name",                                                                                                                                                                                          null: false
-    t.text     "ingredients",                                                                                                                                                                                   null: false
-    t.text     "instruction",                                                                                                                                                                                   null: false
-    t.string   "image",       default: "https://media.glamour.com/photos/5859a5d2d42240f820440ce6/master/w_1600%2Cc_limit/RASPBERRY%252520AND%252520PEACH%252520SMOOTHIE%252520BOWL%252520thefeedfeed.com.jpg"
-    t.datetime "created_at",                                                                                                                                                                                    null: false
-    t.datetime "updated_at",                                                                                                                                                                                    null: false
+    t.string   "name",                                                                    null: false
+    t.text     "ingredients",                                                             null: false
+    t.text     "instruction",                                                             null: false
+    t.string   "image",       default: "http://clipart-library.com/images/AibKK8j8T.png"
+    t.datetime "created_at",                                                              null: false
+    t.datetime "updated_at",                                                              null: false
   end
 
 end

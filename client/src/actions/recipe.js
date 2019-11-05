@@ -35,17 +35,18 @@ export const getRecipes = () => (dispatch,getState) => {
             }
             throw new Error("Network response was not ok.");
           })
-          .then(response => {
+          .then(responseJSON => {
               dispatch(getRecipesSuccess({
-                  recipes: response
+                  recipes: responseJSON
               }))
           })
-    } catch (e) {
+    } catch (error) {
         dispatch(getRecipesFailure())
     }
 }
 
 export const deleteRecipe = (id, callback) => (dispatch,getState) => {
+  console.log('C')
   const url = `http://localhost:3001/recipes/${id}`;
     fetch(url, {
       method: 'DELETE'
@@ -59,7 +60,14 @@ export const deleteRecipe = (id, callback) => (dispatch,getState) => {
       })
 
       .then((response) => {
+        console.log('D')
         dispatch(deleteRecipeSuccess())
        callback();
       })
 }
+
+
+// Why async actions aren't giving you an error in Redux
+// Why we are console.loging ACBD* vs ACDB
+// React Doc -> 12. Thinking in React
+// 1-11 artcile
